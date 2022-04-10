@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Classifier</title>
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Pacifico&family=Roboto+Mono:wght@100;200&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <a href={{url_for('delete')}}>Video Frame Classifier</a>
+        <p class="project-doers">Tganyani and Rmapara</p>
+    </nav>
+    <p class="notification">Video must not exceed 2MB</p>
+    <section class="container">
+        <div>
+            <form action="/predict" method="post" enctype="multipart/form-data">
+                <section class="find-container">
+                    <input class="txt-search-query" type="text" name="search_query" placeholder="Search For Object..."/> 
+                    <button type="submit" class="btn-find">Find</button>
+                </section>
+            </form>
+            <form action="/" method="POST" enctype="multipart/form-data">
+                <input class="upload-video-file" type="file" name="video" hidden/>
+                <section class="load-video-container">
+                    <p class="video-name"></p>
+                    <button class="btn-load-video" type="button">
+                        Load Video
+                    </button>
+                </section>
+                <button class="btn-upload-video" type="submit" disabled=true>
+                    Upload Video
+                </button>
+            </form>
+        </div>
+        <section class="output-image-container">
+            <p class="output-image-title">Output Image :</p>
+            <img class="output-frame-image" src={{ url_for('static', filename="images/apple.jpg") }} alt="output-frame-image" />
+            <p class="output-frame-class-name">Output Class: {{class_name}}</p>
+            <p class="index-name"><span>{{index}}</span></p>
+        </section>
+    </section>
+</body>
+<script src="{{url_for('static',filename='scripts/main.js') }}"></script>
+</html>
