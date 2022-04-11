@@ -133,8 +133,8 @@ def predict():
 
 if __name__ == '__main__':
     from wsgiref.simple_server import make_server
-    with make_server('', 8000, app) as server:
-        print('serving on port 8000...')
+    with make_server('', 5000, app) as server:
+        print('serving on port 5000...')
         server.serve_forever()
     
     
