@@ -132,7 +132,9 @@ def predict():
     return render_template('index.html',index=image_index, class_name=frame_class)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    from wsgiref.simple_server import make_server
+    with make_server('', 5000, app) as server:
+        print('serving on port 5000...')
+        server.serve_forever()
     
     
