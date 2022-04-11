@@ -132,4 +132,6 @@ def predict():
     return render_template('index.html',index=image_index, class_name=frame_class)
 
 if __name__ == '__main__':
-    app.run(port=7000)
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=8080)
+    
